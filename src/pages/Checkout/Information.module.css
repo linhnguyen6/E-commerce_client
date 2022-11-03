@@ -1,0 +1,138 @@
+.container-fluid {
+  width: 100%;
+  background-image: url("../../assets/images/breadcrumb.jpg");
+  height: 164px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  display: grid;
+  place-items: center;
+}
+
+.container-fluid div h1 {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.container-fluid div h2 {
+  color: white;
+  text-align: center;
+}
+
+.container-fluid div h2 span {
+  color: var(--color);
+}
+
+.box-banner {
+  margin-top: 30px;
+}
+
+.box-user-infor {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.box-user-infor h3 {
+  font-weight: 700;
+  font-size: 30px;
+  padding: 10px 0;
+  border-bottom: 1px solid #b6b5b5;
+}
+
+.infor-order {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+}
+
+.form-group :is(input, select) {
+  width: 100%;
+  height: 46px;
+  border: 1px solid #ebebeb;
+  font-size: 16px;
+  border-radius: 4px;
+  outline: none;
+  padding-left: 10px;
+  margin: 10px 0;
+}
+
+.form-group select {
+  background-color: unset;
+  cursor: pointer;
+}
+
+.box-email-name {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.error {
+  color: red;
+  display: block;
+}
+
+.detail-order {
+  margin: 10px 0;
+  padding: 10px 15px;
+  background: #f5f5f5;
+}
+
+.detail-order h2 {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #000;
+}
+
+.button-order {
+  color: white;
+  background: #7fad39;
+  padding: 10px 26px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 17px;
+  margin-inline: auto;
+  display: block;
+}
+
+.check-order,
+.check-order-total {
+  font-weight: bold;
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+
+.check-order:first {
+  font-weight: bold;
+}
+
+.check-order span,
+.check-order-total span {
+  float: right;
+}
+
+.check-order-total span {
+  color: rgb(236, 34, 34);
+}
+
+.detail-order ul li {
+  list-style: none;
+  font-size: 15px;
+  padding: 5px 0;
+}
+
+.detail-order ul li span {
+  float: right;
+  font-weight: bold;
+  color: #6f6f6f;
+}

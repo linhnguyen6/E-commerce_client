@@ -1,0 +1,103 @@
+:root {
+  --max-width: 1200px;
+  --color: #7fad39;
+}
+
+.container-fluid {
+  width: 100%;
+  background-image: url("../../assets/images/breadcrumb.jpg");
+  height: 164px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  display: grid;
+  place-items: center;
+  margin: 30px 0;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  margin-block: 40px;
+}
+
+.container-fluid div h1 {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.container-fluid div h2 {
+  color: white;
+  text-align: center;
+}
+
+.container-fluid div h2 span {
+  color: var(--color);
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.contact div {
+  text-align: center;
+}
+
+.contact div svg {
+  font-size: 60px;
+  color: var(--color);
+}
+
+.contact div h3 {
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+.contact div span {
+  font-size: 16px;
+}
+
+.title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.infor-contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.infor-contact input,
+textarea {
+  width: 100%;
+  background-color: #ffffff;
+  border-color: #ebebeb;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  color: #6f6f6f;
+  display: inline-block;
+  font-family: Cairo;
+  line-height: 24px;
+  margin: 0px 0px 30px;
+  outline: none;
+  padding: 15px 10px;
+  resize: none;
+}
+
+.btn-send {
+  font-weight: bold;
+  background-color: var(--color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}

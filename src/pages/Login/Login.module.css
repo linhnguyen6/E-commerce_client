@@ -1,0 +1,110 @@
+:root {
+  --max-width: 1200px;
+  --color: #7fad39;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: 20px 0;
+}
+
+.container h2 {
+  color: var(--color);
+}
+
+.box-user {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box-signup {
+  max-width: 590px;
+}
+
+.box-signup,
+.box-login {
+  padding: 16px 24px;
+  border: 1px solid #eeeeee;
+}
+
+.box-signup h3,
+.box-login h3 {
+  color: var(--color);
+  font-weight: 700;
+}
+
+.box-login button,
+.box-signup button {
+  background-color: var(--color);
+  padding: 9px 15px;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+div.form-group label span {
+  color: var(--color);
+  padding-left: 5px;
+}
+
+div.form-group label,
+label.forgot {
+  display: block;
+  font-weight: 700;
+}
+
+label.forgot:hover {
+  color: #00aefd;
+  cursor: pointer;
+}
+
+div.form-group input {
+  outline: none;
+  padding: 5px 7px;
+  border: none;
+  border: 1px solid var(--color);
+}
+
+div.form-group input:focus {
+  border-color: var(--color);
+}
+
+.input_show_password:checked + .inputPassword label:nth-child(2) {
+  display: none;
+}
+
+.inputPassword label:nth-child(3) {
+  display: none;
+}
+
+.input_show_password:checked + .inputPassword label:nth-child(3) {
+  display: block;
+}
+
+.message-error {
+  color: red;
+  display: block;
+}
+
+.box-login button[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.inputPassword {
+  position: relative;
+  width: fit-content;
+}
+
+.inputPassword svg {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

@@ -1,0 +1,102 @@
+:root {
+  --max-width: 1200px;
+  --color: #7fad39;
+}
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: 20px 0;
+}
+
+.container h2 {
+  font-weight: 700;
+}
+
+.container h3 {
+  color: var(--color);
+  font-weight: 600;
+}
+
+button.btn-signup {
+  background-color: var(--color);
+  padding: 9px 15px;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+button.btn-signup[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.box-signup {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.box-signup div input {
+  width: 100%;
+}
+
+.form-input {
+  margin: 10px 0;
+}
+
+.form-input input {
+  outline: none;
+  padding: 5px 7px;
+  border: none;
+  border: 1px solid var(--color);
+}
+
+.message-error {
+  color: red;
+}
+
+div.form-group input {
+  outline: none;
+  padding: 5px 7px;
+  border: none;
+  border: 1px solid var(--color);
+}
+
+.input_show_password:checked + .inputPassword label:nth-child(2) {
+  display: none;
+}
+
+.inputPassword label:nth-child(3) {
+  display: none;
+}
+
+.input_show_password:checked + .inputPassword label:nth-child(3) {
+  display: block;
+}
+
+.message-error {
+  color: red;
+  display: block;
+}
+
+.box-login button[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.inputPassword {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.inputPassword svg {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

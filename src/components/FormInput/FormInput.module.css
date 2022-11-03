@@ -1,0 +1,23 @@
+.form-input {
+  margin: 10px 0;
+}
+
+.form-input input {
+  outline: none;
+  padding: 5px 7px;
+  border: none;
+  border: 1px solid var(--color);
+}
+
+.form-input label {
+  text-transform: uppercase;
+}
+
+.message-error {
+  color: red;
+}
+
+.form-input label span {
+  color: red;
+  font-weight: 600;
+}
