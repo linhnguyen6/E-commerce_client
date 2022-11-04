@@ -24,7 +24,7 @@ const Payment = () => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "https://tiki.pages.dev/payment/cart",
+        return_url: "https://tiki.pages.dev/cart",
       },
     });
 
