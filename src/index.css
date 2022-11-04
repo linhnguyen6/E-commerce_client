@@ -13,3 +13,14 @@ body {
 form[id="basic"] {
   margin-top: 20px;
 }
+
+#root {
+  display: flex;
+  justify-content: space-between;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#layout {
+  flex-grow: 1;
+}
