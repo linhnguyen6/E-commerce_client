@@ -22,7 +22,7 @@ const CheckoutForm = () => {
 
   const getClientSecret = async () => {
     const { data } = await axios.post(
-      "https://near-judicious-microraptor.glitch.me/create-payment-intent",
+      process.env.REACT_APP_CREATE_PAYMENT_INTENT_API,
       {
         amount,
       }
@@ -31,9 +31,7 @@ const CheckoutForm = () => {
   };
 
   const getPublishableKey = async () => {
-    const { data } = await axios.get(
-      "https://near-judicious-microraptor.glitch.me/config"
-    );
+    const { data } = await axios.get(process.env.REACT_APP_CONFIG_API);
     setStripePromise(loadStripe(data.publishableKey));
   };
 

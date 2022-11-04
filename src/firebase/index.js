@@ -2,18 +2,18 @@ import { GoogleAuthProvider, getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBsKu7kunOkhF4zaJBKtUJXYWim4Kjn2-4",
-  authDomain: "e-commerce-d4b11.firebaseapp.com",
-  projectId: "e-commerce-d4b11",
-  storageBucket: "e-commerce-d4b11.appspot.com",
-  messagingSenderId: "998114096599",
-  appId: "1:998114096599:web:f2cc1b58e036d8ab270792",
-  measurementId: "G-8DJ922PGKH",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
-provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+provider.addScope(process.env.REACT_APP_AUTH_PROVIDER);
 const auth = getAuth();
 auth.languageCode = "it";
 export { auth, app };
