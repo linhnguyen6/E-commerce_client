@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { read } from "../../api/category";
 import { logout } from "../../reducer/authSlice";
 import images from "../../assets";
@@ -28,6 +28,7 @@ const cx = classNames.bind(styles);
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // state
   const [anchorEl, setAnchorEl] = useState(null);
@@ -184,14 +185,12 @@ const Header = () => {
       />
       <div className={cx("menu-mobile")}>
         <div>
-          <img src={images.logo} alt="" />
+          <img src={images.logo} alt="" onClick={() => navigate(Path.Home)} />
         </div>
         <div>
-          <div>
-            <FavoriteIcon sx={{ marginInline: 1 }} />
-          </div>
-          <div>
+          <div onClick={() => navigate(Path.Cart)}>
             <ShoppingBasketIcon />
+            {carts.length > 0 ? <span>{carts.length}</span> : null}
           </div>
         </div>
         <div>

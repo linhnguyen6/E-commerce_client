@@ -96,3 +96,36 @@ div.form-group input {
   transform: translateY(-50%);
   cursor: pointer;
 }
+
+@media only screen and (max-width: 390px) {
+  .container :is(h2, h3) {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .box-signup {
+    flex-direction: column;
+    max-width: 360px;
+    margin-inline: auto;
+  }
+
+  .btn-signup {
+    margin-inline: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .container :is(h2, h3) {
+    text-align: center;
+  }
+
+  .box-signup {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .btn-signup {
+    margin-inline: auto;
+  }
+}

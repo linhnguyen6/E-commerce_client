@@ -85,10 +85,12 @@ const Cart = () => {
               {carts.map((product) => (
                 <tr key={product.id}>
                   <td className={cx("row-infor-product")}>
-                    <img src={product.image} alt="" width={100} height={100} />
-                    <h5>{product.name}</h5>
+                    <div>
+                      <img src={product.image} alt={product.name} />
+                      <h5>{product.name}</h5>
+                    </div>
                   </td>
-                  <td>{product.price}</td>
+                  <td className={cx("price")}>${product.price}</td>
                   <td>
                     <div className={cx("quantity")}>
                       <button
@@ -106,7 +108,7 @@ const Cart = () => {
                   </td>
                   <td>
                     <div className={cx("total")}>
-                      <span>{product.quantity * product.price}</span>
+                      <span>${product.quantity * product.price}</span>
                       <svg
                         onClick={() => handleRemoveCart(product.id)}
                         className={cx("trash")}
@@ -138,10 +140,6 @@ const Cart = () => {
             <div></div>
             <div>
               <h3>Cart Total</h3>
-              <ul>
-                <li>Subtotal</li>
-                <li>$454.98</li>
-              </ul>
               <ul>
                 <li>Total</li>
                 <li>${total}</li>

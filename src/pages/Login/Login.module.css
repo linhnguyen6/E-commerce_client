@@ -103,3 +103,28 @@ div.form-group input:focus {
   transform: translateY(-50%);
   cursor: pointer;
 }
+
+@media only screen and (max-width: 390px) {
+  .container h2 {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .box-user {
+    flex-direction: column;
+    max-width: 360px;
+    margin-inline: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .container h2 {
+    text-align: center;
+  }
+
+  .box-user {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+}

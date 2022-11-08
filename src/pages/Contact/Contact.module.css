@@ -101,3 +101,27 @@ textarea {
   margin-right: auto;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 390px) {
+  .contact div svg {
+    font-size: 30px;
+  }
+
+  .contact div span {
+    font-size: 11px;
+  }
+
+  .contact div h3 {
+    font-size: 12px;
+  }
+
+  .container {
+    max-width: 360px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    max-width: 720px;
+  }
+}

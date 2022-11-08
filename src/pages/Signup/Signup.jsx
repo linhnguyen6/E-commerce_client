@@ -34,9 +34,7 @@ const Signup = () => {
     }
   }, [user, navigate]);
 
-  const onSubmit = (data) => {
-    dispatch(signup(data));
-  };
+  const onSubmit = (data) => dispatch(signup(data));
 
   const handleInputChange = (element) => {
     if (refs.current[element].checked) {
