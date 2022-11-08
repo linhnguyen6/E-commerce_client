@@ -525,7 +525,7 @@
     cursor: pointer;
   }
 
-  .menu-mobile div:nth-child(2) div::before {
+  .menu-mobile div:nth-child(2) div span {
     position: absolute;
     top: -5px;
     right: -5px;
@@ -538,14 +538,6 @@
     align-items: center;
     border-radius: 50%;
     padding: 7px;
-  }
-
-  .menu-mobile div:nth-child(2) div:first-child::before {
-    content: "1";
-  }
-
-  .menu-mobile div:nth-child(2) div:last-child::before {
-    content: "3";
   }
 
   .overlay {
