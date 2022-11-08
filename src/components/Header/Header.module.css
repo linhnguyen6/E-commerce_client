@@ -169,6 +169,7 @@
 }
 
 .category {
+  cursor: pointer;
   display: flex;
   width: fit-content;
   align-items: center;
@@ -177,6 +178,20 @@
   font-weight: bold;
   padding: 10px 40px 10px 20px;
 }
+
+.list-category ul li a {
+  color: unset;
+  font-weight: 600;
+}
+
+.list-category ul li a:hover {
+  color: var(--color);
+}
+
+.category svg:last-child {
+  display: none;
+}
+
 .form-search {
   display: flex;
 }
@@ -244,6 +259,19 @@
 .inputHidden {
   width: 0;
   height: 0;
+}
+
+.list-category {
+  max-height: 0;
+  overflow: hidden;
+}
+
+.logout-mobile {
+  padding-left: 5px;
+}
+
+.icon-person a {
+  color: unset;
 }
 
 @media only screen and (max-width: 767px) {
@@ -371,6 +399,11 @@
   .category,
   .contact {
     margin-right: auto;
+  }
+
+  .category svg:last-child {
+    margin-left: auto;
+    display: inline;
   }
 
   .icon-person {
@@ -576,6 +609,36 @@
     margin-right: auto;
   }
 
+  .category svg:last-child {
+    margin-left: auto;
+    display: inline;
+  }
+
+  .list-category {
+    margin-right: auto;
+    margin-left: 60px;
+  }
+
+  .list-category li {
+    padding: 5px 0;
+  }
+
+  .list-category {
+    max-height: 0;
+    transition: transform 0.5s ease-out;
+    transform-origin: top;
+    overflow: hidden;
+  }
+
+  .show_category:checked + .list-category {
+    max-height: 500px;
+    transition: max-height 0.5s ease-in;
+  }
+
+  .list-category li {
+    list-style: none;
+  }
+
   .icon-person {
     display: flex;
     align-items: center;
@@ -653,5 +716,33 @@
   .wrapper {
     max-width: 960px;
     margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .form-search,
+  header {
+    width: 100%;
+  }
+  header {
+    padding-inline: 15px;
+    margin-inline: auto;
+  }
+
+  .list-category {
+    margin-right: auto;
+    max-height: 0;
+    transition: transform 0.5s ease-out;
+    transform-origin: top;
+    overflow: hidden;
+    margin-left: 60px;
+  }
+
+  .list-category li {
+    padding: 5px 0;
+  }
+  .show_category:checked + .list-category {
+    max-height: 500px;
+    transition: max-height 0.5s ease-in;
   }
 }

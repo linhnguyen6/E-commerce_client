@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "https://vapi.vnappmob.com/api/province";
+const API = process.env.REACT_APP_PROVINCE_API;
 
 export const getProvince = async () => {
   const { data } = await axios.get(`${API}`);

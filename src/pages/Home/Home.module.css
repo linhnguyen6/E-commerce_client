@@ -65,15 +65,15 @@ p.slogan {
 .title {
   position: relative;
   font-size: 40px;
-  margin-block: 40px;
   font-weight: 700;
   text-align: center;
+  padding-block: 20px;
 }
 
 .title::before {
   position: absolute;
   content: "";
-  bottom: -10px;
+  bottom: 18px;
   border: 2px solid #7fad39;
   left: 50%;
   width: 80px;
@@ -128,8 +128,15 @@ p.slogan {
 }
 
 .box-product img {
+  height: 270px;
   width: 270px;
   object-fit: cover;
+}
+
+.box-product:hover .feature-item-pic {
+  transform: translateY(-150%);
+  transition: transform ease 0.5s;
+  z-index: 100232;
 }
 
 .product-name,
@@ -317,12 +324,6 @@ p.slogan {
 
   .list-product img {
     width: 100%;
-    height: 242px;
-  }
-
-  .box-product {
-    max-width: 242px;
-    height: 242px;
   }
 
   .product-name,
@@ -409,13 +410,15 @@ p.slogan {
 
   .title {
     width: fit-content;
-    margin: 15px auto;
+    margin: 0 auto;
+    font-size: 30px;
   }
 
   .list-product {
     margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
   }
 
   .list-product img {
@@ -443,6 +446,8 @@ p.slogan {
   .list-blog {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding-top: 10px;
   }
 
   .blog-title {
@@ -499,5 +504,53 @@ p.slogan {
   }
   .row-feature-item h3 {
     font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .container {
+    max-width: 390px;
+    padding-inline: 15px;
+    margin-inline: auto;
+  }
+  .banner div h2 {
+    font-size: 16px;
+  }
+  .slogan {
+    margin: unset;
+  }
+
+  .banner div p:first-child {
+    margin-bottom: unset;
+  }
+
+  .banner div button {
+    margin-top: 5px;
+  }
+
+  .product-item {
+    width: 100%;
+  }
+
+  .box-product {
+    width: 100% !important;
+  }
+
+  .list-product img {
+    width: 100%;
+  }
+
+  .list-blog {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .list-category li a {
+    font-size: 15px;
+  }
+
+  .title {
+    font-size: 30px;
+    margin: 0 auto;
   }
 }

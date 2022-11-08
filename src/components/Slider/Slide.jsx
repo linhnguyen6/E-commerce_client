@@ -1,8 +1,10 @@
 import React from "react";
-import Slider from "react-slick";
-import "./Slide.css";
-import images from "../../assets";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import images from "../../assets";
+// style
+import "./Slide.css";
+
 const Slide = () => {
   const listProduct = [
     {
@@ -70,9 +72,9 @@ const Slide = () => {
   return (
     <Slider {...settings}>
       {listProduct.map((product) => (
-        <div key={product.id} className="product-item">
+        <div key={product.id} className="product-item-slide">
           <img src={product.image} alt="" />
-          <Link className="product-name">{product.name}</Link>
+          <Link className="product-name-slide">{product.name}</Link>
         </div>
       ))}
     </Slider>

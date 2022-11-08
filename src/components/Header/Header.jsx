@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { read } from "../../api/category";
 import { logout } from "../../reducer/authSlice";
 import images from "../../assets";
 import Path from "../../routes";
 // MUI
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PersonIcon from "@mui/icons-material/Person";
 import MenuIcon from "@mui/icons-material/Menu";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
@@ -26,15 +28,27 @@ const cx = classNames.bind(styles);
 
 const Header = () => {
   const dispatch = useDispatch();
+
+  // state
   const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const [categories, setCategories] = useState([]);
+
+  // selector
   const { cart: cartReducer, auth } = useSelector((state) => state);
   const { carts } = cartReducer;
   const { user } = auth;
-  const open = Boolean(anchorEl);
+
+  useEffect(() => {
+    getListCategories();
+  }, []);
+
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleLogout = () => dispatch(logout());
+  const getListCategories = async () => {
+    const { data } = await read();
+    setCategories(data);
   };
 
   const menuItems = [
@@ -181,16 +195,24 @@ const Header = () => {
           </div>
         </div>
         <div>
-          <span className={cx("icon-person")}>
-            <PersonIcon />
-            <span>Login</span>
-          </span>
+          {user ? (
+            <span className={cx("icon-person")}>
+              <PersonIcon />
+              <span>{user.email.slice(0, -10)} </span>
+              <span onClick={handleLogout} className={cx("logout-mobile")}>
+                | Logout
+              </span>
+            </span>
+          ) : (
+            <span className={cx("icon-person")}>
+              <PersonIcon />
+              <Link to={Path.Login}>Login</Link>
+            </span>
+          )}
           <ul>
-            <li>Home</li>
-            <li>Shop</li>
-            <li>Pages</li>
-            <li>Blog</li>
-            <li>Contact</li>
+            {menuItems.map((menu, rowIndex) => (
+              <li key={rowIndex}>{menu.page}</li>
+            ))}
           </ul>
         </div>
         <div>
@@ -208,9 +230,27 @@ const Header = () => {
       </div>
       <label htmlFor="hidden_menu" className={cx("overlay")}></label>
       <div className={cx("wrapper")}>
-        <div className={cx("category")}>
+        <label className={cx("category")} htmlFor="show_category">
           <MenuIcon sx={{ mr: 2 }} />
           All Category
+          <KeyboardArrowDownIcon />
+        </label>
+        <input
+          type="checkbox"
+          className={cx("show_category")}
+          id="show_category"
+          hidden
+        />
+        <div className={cx("list-category")}>
+          <ul>
+            {categories.map((category) => (
+              <li key={category.id}>
+                <Link to={`${Path.Category}/${category.id}`}>
+                  {category.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
         <div className={cx("form-search")}>
           <input

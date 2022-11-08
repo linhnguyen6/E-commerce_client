@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import classNames from "classnames/bind";
-import { listProduct } from "../../data";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { listProduct } from "../../data";
+import { read, getOne as show } from "../../api/category";
+import Path from "../../routes";
 // MUI
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -9,28 +10,44 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 // styles
 import styles from "./Category.module.css";
+import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 const Category = () => {
-  const { slug } = useParams();
+  const { id } = useParams();
+  document.title = "Category" + id;
 
+  // state
   const [value, setValue] = useState([10, 90]);
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState();
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  useEffect(() => {
+    getListCategories();
+    getCategory(id);
+  }, [id]);
+
+  const getListCategories = async () => {
+    const { data } = await read();
+    setCategories(data);
   };
 
-  document.title = "Category" + slug;
+  const getCategory = async (id) => {
+    const { data } = await show(id);
+    setCategory(data);
+  };
+
+  const handleChange = (e, newValue) => setValue(newValue);
 
   const valuetext = (value) => `${value}°C`;
 
-  return (
+  return category ? (
     <>
       <div className={cx("container-fluid")}>
         <div>
           <h1>Organi Shop</h1>
           <h2>
-            <b>Home</b> <span>|</span> Shop {slug}
+            <b>Home</b> <span>|</span> Shop {category.name}
           </h2>
         </div>
       </div>
@@ -38,19 +55,16 @@ const Category = () => {
         <div className={cx("category")}>
           <h3>Category</h3>
           <ul>
-            <li>Fresh Meat</li>
-            <li>Vegetables</li>
-            <li>Fruit & Nut Gifts</li>
-            <li>Fresh Berries</li>
-            <li>Ocean Foods</li>
-            <li>Butter & Eggs</li>
-            <li>Fastfood</li>
-            <li>Fresh Onion</li>
-            <li>Papayaya & Crisps</li>
-            <li>Oatmeal</li>
+            {categories.map((category) => (
+              <li key={category.id} className={cx("category-item")}>
+                <Link to={`${Path.Category}/${category.id}`}>
+                  {category.name}
+                </Link>
+              </li>
+            ))}
           </ul>
           <h3>Price</h3>
-          <Box sx={{ width: 300 }}>
+          <Box className={cx("input-range-price")}>
             <Slider
               getAriaLabel={() => "Temperature range"}
               value={value}
@@ -140,7 +154,6 @@ const Category = () => {
                     </li>
                   </ul>
                 </div>
-                <span className={cx("sale")}>20%</span>
                 <p className={cx("product-name")}>{product.name}</p>
                 <p className={cx("product-price")}>
                   {product.price + index}$ <span>$36.00</span>
@@ -171,7 +184,7 @@ const Category = () => {
         </div>
       </div>
     </>
-  );
+  ) : null;
 };
 
 export default Category;
