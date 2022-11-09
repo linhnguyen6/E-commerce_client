@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { listProduct } from "../../data";
+import { useDispatch } from "react-redux";
+import images from "../../assets";
 import { read, getOne as show } from "../../api/category";
+import { PriceRange } from "../../utils/constant";
+import cartSlice from "../../reducer/cartSlice";
 import Path from "../../routes";
+import toastr from "toastr";
 // MUI
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -15,12 +19,15 @@ const cx = classNames.bind(styles);
 
 const Category = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const countProductOrder = 1;
   document.title = "Category" + id;
 
   // state
-  const [value, setValue] = useState([10, 90]);
+  const [value, setValue] = useState([PriceRange.min, PriceRange.max]);
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState();
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     getListCategories();
@@ -35,9 +42,24 @@ const Category = () => {
   const getCategory = async (id) => {
     const { data } = await show(id);
     setCategory(data);
+    setProducts(data.products);
   };
 
   const handleChange = (e, newValue) => setValue(newValue);
+
+  const handleClickFilter = () => {
+    const productsFilter = category.products.filter(
+      (product) => product.price >= value[0] && product.price <= value[1]
+    );
+    setProducts(productsFilter);
+  };
+
+  const handleAddToCart = (product) => {
+    dispatch(
+      cartSlice.actions.addToCart({ ...product, quantity: countProductOrder })
+    );
+    toastr.success("Add to cart successfully");
+  };
 
   const valuetext = (value) => `${value}°C`;
 
@@ -71,12 +93,17 @@ const Category = () => {
               onChange={handleChange}
               valueLabelDisplay="auto"
               getAriaValueText={valuetext}
+              min={PriceRange.min}
+              max={PriceRange.max}
             />
           </Box>
           <div className={cx("range-price")}>
             <span>${value[0]}</span>
             <span>-</span>
             <span>${value[1]}</span>
+            <button className={cx("btn-filter")} onClick={handleClickFilter}>
+              Filter
+            </button>
           </div>
           <h3>Colors</h3>
           <div className={cx("colors")}>
@@ -139,47 +166,36 @@ const Category = () => {
           </div>
         </div>
         <div className={cx("product")}>
-          <h2>Sale Off</h2>
+          <h2>Products</h2>
           <div className={cx("list-product")}>
-            {listProduct.map((product, index) => (
-              <div className={cx("product-item")} key={product.id}>
-                <div className={cx("box-product")}>
-                  <img src={product.image} alt="" />
-                  <ul className={cx("feature-item-pic")}>
-                    <li className={cx("icon")}>
-                      <FavoriteIcon />
-                    </li>
-                    <li className={cx("icon")}>
-                      <ShoppingCartIcon />
-                    </li>
-                  </ul>
+            {products.length > 0 ? (
+              products.map((product) => (
+                <div className={cx("product-item")} key={product.id}>
+                  <div className={cx("box-product")}>
+                    <img src={product.image} alt="" />
+                    <ul className={cx("feature-item-pic")}>
+                      <li className={cx("icon")}>
+                        <FavoriteIcon />
+                      </li>
+                      <li
+                        className={cx("icon")}
+                        onClick={() => handleAddToCart(product)}
+                      >
+                        <ShoppingCartIcon />
+                      </li>
+                    </ul>
+                  </div>
+                  <p className={cx("product-name")}>{product.name}</p>
+                  <p className={cx("product-price")}>${product.price}</p>
                 </div>
-                <p className={cx("product-name")}>{product.name}</p>
-                <p className={cx("product-price")}>
-                  {product.price + index}$ <span>$36.00</span>
-                </p>
-              </div>
-            ))}
-          </div>
-          <div className={cx("pagination")}>
-            <Link className={cx("page")}>1</Link>
-            <Link className={cx("page")}>2</Link>
-            <Link className={cx("page")}>3</Link>
-            <Link className={cx("page")}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
-            </Link>
+              ))
+            ) : (
+              <img
+                src={images.nodata}
+                alt="Data Not Found"
+                className={cx("no-data-image")}
+              />
+            )}
           </div>
         </div>
       </div>

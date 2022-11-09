@@ -212,11 +212,6 @@
   margin-left: 5px;
 }
 
-.pagination {
-  display: flex;
-  margin: 20px 0;
-}
-
 .page {
   display: inline-block;
   width: 30px;
@@ -242,28 +237,45 @@
 
 .input-range-price {
   width: 300px;
+  display: flex;
 }
-.pagination {
-  margin-inline: auto;
-  width: fit-content;
+
+.btn-filter {
+  border: unset;
+  padding: 5px 15px;
+  color: white;
+  background-color: #9b59b6;
+  cursor: pointer;
 }
+
+.no-data-image {
+  width: 300%;
+}
+
 @media only screen and (max-width: 390px) {
   .container {
     padding: 0 15px;
     display: flex;
     flex-direction: column;
   }
+
   .list-product {
     display: flex;
     flex-direction: column;
   }
+
   .box-product {
     margin-inline: auto;
   }
+
   .colors {
     display: flex;
     justify-content: space-around;
     max-width: 360px;
+  }
+
+  .no-data-image {
+    width: 100%;
   }
 }
 
@@ -275,6 +287,10 @@
 
   .box-product img {
     width: 100%;
+  }
+
+  .no-data-image {
+    width: 200%;
   }
 
   .list-product {

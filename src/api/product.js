@@ -21,3 +21,7 @@ export const destroy = (id) => {
 export const show = (id) => {
   return instance.get(`${url}/${id}?_expand=category`);
 };
+
+export const search = (keyword) => {
+  return instance.get(`${url}?q=${keyword}`);
+};

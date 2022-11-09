@@ -6,6 +6,7 @@ import cartSlice from "../../reducer/cartSlice";
 // styles
 import styles from "./Cart.module.css";
 import classNames from "classnames/bind";
+import { StatusCodeCheckout } from "../../utils/constant";
 const cx = classNames.bind(styles);
 
 const Cart = () => {
@@ -18,7 +19,7 @@ const Cart = () => {
   const statusCheckout = searchParams.get("redirect_status");
 
   useEffect(() => {
-    if (statusCheckout === "succeeded") {
+    if (statusCheckout === StatusCodeCheckout.success) {
       dispatch(cartSlice.actions.clearCart());
     }
   }, [statusCheckout, dispatch]);
@@ -43,7 +44,7 @@ const Cart = () => {
     return acc + i.price * i.quantity;
   }, 0);
 
-  if (statusCheckout === "succeeded") {
+  if (statusCheckout === StatusCodeCheckout.success) {
     return (
       <div className={cx("card")}>
         <div className={cx("tick")}>

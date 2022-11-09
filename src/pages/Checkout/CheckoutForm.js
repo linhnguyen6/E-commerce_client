@@ -24,7 +24,7 @@ const CheckoutForm = () => {
     const { data } = await axios.post(
       process.env.REACT_APP_CREATE_PAYMENT_INTENT_API,
       {
-        amount,
+        amount
       }
     );
     setClientSecret(data.clientSecret);

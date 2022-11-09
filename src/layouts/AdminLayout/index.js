@@ -1,41 +1,41 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import Path from "../../routes";
 // Antd
-import { Col, Row } from "antd";
+import { Col, Row, Menu } from "antd";
 import {
   AppstoreOutlined,
   UnorderedListOutlined,
-  UserOutlined,
+  UserOutlined
 } from "@ant-design/icons";
-import { Menu } from "antd";
-// style
-import styles from "./AdminLayout.module.css";
-import classNames from "classnames/bind";
-const cx = classNames.bind(styles);
 
 const getItem = (label, icon, children, type) => ({
   icon,
   children,
   label,
-  type,
+  type
 });
 
 const items = [
   getItem(
-    <Link to="/admin/dashboard">Categories</Link>,
+    <Link to={Path.AdminDashBoard}>Categories</Link>,
     <UnorderedListOutlined />
   ),
-  getItem(<Link to="/admin/products">Products</Link>, <AppstoreOutlined />),
-  getItem(<div>User</div>, <UserOutlined />),
+  getItem(<Link to={Path.AdminProduct}>Products</Link>, <AppstoreOutlined />),
+  getItem(<div>User</div>, <UserOutlined />)
 ];
 
 const AdminLayout = () => {
   return (
     <Row>
-      <Col span={4}>
-        <Menu className={cx("menu")} mode="inline" items={items} />
+      <Col xl={{ span: 3 }} lg={{ span: 2 }} md={{ span: 4 }}>
+        <Menu mode="inline" items={items} />
       </Col>
-      <Col span={20} style={{ marginLeft: -30 }}>
+      <Col
+        xl={{ span: 16 }}
+        lg={{ span: 16, offset: 1 }}
+        md={{ span: 16, offset: 1 }}
+      >
         <Outlet />
       </Col>
     </Row>

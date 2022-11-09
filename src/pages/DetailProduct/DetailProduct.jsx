@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import CartSlice from "../../reducer/cartSlice";
+import toastr from "toastr";
 // API
 import { show } from "../../api/product";
 import { getOne as getCategory } from "../../api/category";
@@ -41,7 +42,13 @@ const DetailProduct = () => {
 
   document.title = "Product" + id;
 
-  const handleIncrease = () => setCount(count + 1);
+  const handleIncrease = () => {
+    if (count >= 50) {
+      toastr.warning("You can only choose up to 50 products");
+      return;
+    }
+    setCount(count + 1);
+  };
 
   const handleDecrease = () => {
     if (count <= 1) {
@@ -52,6 +59,7 @@ const DetailProduct = () => {
 
   const handleAddToCart = ({ categoryId, category, quantity, ...arg }) => {
     dispatch(CartSlice.actions.addToCart({ ...arg, quantity: count }));
+    toastr.success("Add to cart successfully");
   };
 
   return (

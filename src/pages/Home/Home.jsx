@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import images from "../../assets";
 import { listBlog } from "../../data";
 import Path from "../../routes";
+import toastr from "toastr";
 // API
 import { read } from "../../api/product";
 import { read as readCategory } from "../../api/category";
@@ -15,11 +16,16 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 // style
 import classNames from "classnames/bind";
 import styles from "./Home.module.css";
+import { useDispatch } from "react-redux";
+import cartSlice from "../../reducer/cartSlice";
 const cx = classNames.bind(styles);
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const countProductOrder = 1;
   document.title = "Home Page | Ogani";
 
+  // state
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -36,6 +42,13 @@ const Home = () => {
   const getCategory = async () => {
     const { data } = await readCategory();
     setCategories(data);
+  };
+
+  const handleAddToCart = (product) => {
+    dispatch(
+      cartSlice.actions.addToCart({ ...product, quantity: countProductOrder })
+    );
+    toastr.success("Add to cart successfully");
   };
 
   return (
@@ -65,23 +78,6 @@ const Home = () => {
       </aside>
       <Slide />
       <h2 className={cx("title")}>Feature Product</h2>
-      <ul className={cx("list-category")}>
-        <li>
-          <Link>All</Link>
-        </li>
-        <li>
-          <Link>Orange</Link>
-        </li>
-        <li>
-          <Link>Fresh Meat</Link>
-        </li>
-        <li>
-          <Link>Vegetables</Link>
-        </li>
-        <li>
-          <Link>Fastfood</Link>
-        </li>
-      </ul>
       <div className={cx("list-product")}>
         {products.map((product, index) => (
           <div className={cx("product-item")} key={product.id}>
@@ -91,7 +87,10 @@ const Home = () => {
                 <li className={cx("icon")}>
                   <FavoriteIcon />
                 </li>
-                <li className={cx("icon")}>
+                <li
+                  className={cx("icon")}
+                  onClick={() => handleAddToCart(product)}
+                >
                   <ShoppingCartIcon />
                 </li>
               </ul>

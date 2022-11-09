@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
+import debounce from "lodash.debounce";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { read } from "../../api/category";
+import { search } from "../../api/product";
 import { logout } from "../../reducer/authSlice";
 import images from "../../assets";
 import Path from "../../routes";
 // MUI
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import { CircularProgress } from "@mui/material";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PersonIcon from "@mui/icons-material/Person";
@@ -29,11 +31,14 @@ const cx = classNames.bind(styles);
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // state
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState();
 
   // selector
   const { cart: cartReducer, auth } = useSelector((state) => state);
@@ -47,32 +52,54 @@ const Header = () => {
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
   const handleLogout = () => dispatch(logout());
+
   const getListCategories = async () => {
     const { data } = await read();
     setCategories(data);
   };
 
+  const handleChangeInput = debounce(async (e) => {
+    const keyword = e.target.value;
+    if (keyword !== "") {
+      try {
+        const { data } = await search(keyword);
+        setProducts(data);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        return error;
+      }
+    }
+  }, 2000);
+
+  const handleCheckLoading = (e) => {
+    const keyword = e.target.value;
+    if (keyword.length !== 0) {
+      setLoading(true);
+    } else {
+      setProducts(undefined);
+      setLoading(false);
+    }
+  };
+
+  const handleNavigate = (idProduct) => {
+    navigate(`/product/${idProduct}`);
+    setProducts(undefined);
+  };
+
   const menuItems = [
     {
       page: "HOME",
-      link: "",
-    },
-    {
-      page: "SHOP",
-      link: "shop",
-    },
-    {
-      page: "PAGES",
-      link: "page",
+      link: "/"
     },
     {
       page: "BLOG",
-      link: "blog",
+      link: ""
     },
     {
       page: "CONTACT",
-      link: "contact",
-    },
+      link: "/contact"
+    }
   ];
 
   return (
@@ -121,11 +148,11 @@ const Header = () => {
                   onClose={handleClose}
                   anchorOrigin={{
                     vertical: "bottom",
-                    horizontal: "left",
+                    horizontal: "left"
                   }}
                   transformOrigin={{
                     vertical: "top",
-                    horizontal: "left",
+                    horizontal: "left"
                   }}
                 >
                   <MenuItem
@@ -153,17 +180,22 @@ const Header = () => {
       </div>
       <div className={cx("header_bot")}>
         <Link to={Path.Home}>
-          <img src={images.logo} alt="" />
+          <img src={images.logo} alt="Logo" />
         </Link>
         <ul>
           {menuItems.map((item, index) => (
-            <li key={index} className={cx("menu-item")}>
+            <li
+              key={index}
+              className={cx(
+                "menu-item",
+                location.pathname === item.link ? "active" : ""
+              )}
+            >
               <Link to={item.link}>{item.page}</Link>
             </li>
           ))}
         </ul>
         <div>
-          <FavoriteIcon sx={{ marginInline: 1 }} />
           <Link to={Path.Cart} className={cx("cart")}>
             <ShoppingBasketIcon />
             {carts.length > 0 ? (
@@ -187,11 +219,12 @@ const Header = () => {
         <div>
           <img src={images.logo} alt="" onClick={() => navigate(Path.Home)} />
         </div>
-        <div>
-          <div onClick={() => navigate(Path.Cart)}>
+        <div onClick={() => navigate(Path.Cart)}>
+          <div>
             <ShoppingBasketIcon />
             {carts.length > 0 ? <span>{carts.length}</span> : null}
           </div>
+          Cart
         </div>
         <div>
           {user ? (
@@ -255,8 +288,32 @@ const Header = () => {
           <input
             className={cx("input-search")}
             placeholder="What do you need ?"
+            onChange={handleChangeInput}
+            onKeyUp={handleCheckLoading}
           />
           <button className={cx("btn-search")}>SEARCH</button>
+          {loading ? <CircularProgress className={cx("loading")} /> : null}
+          {products && (
+            <div className={cx("list-product-search")}>
+              {products.map((product, rowIndex) => (
+                <div className={cx("product-item")} key={rowIndex}>
+                  <div>
+                    <img src={product.image} alt={product.name} />
+                  </div>
+                  <div onClick={() => handleNavigate(product.id)}>
+                    <span className={cx("name")}>{product.name}</span>
+                    <p className={cx("price")}>${product.price}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+          {products?.length === 0 && (
+            <div className={cx("list-product-search")}>
+              <p className={cx("no-result")}>No results</p>
+              <span>Please enter another keyword</span>
+            </div>
+          )}
         </div>
         <div className={cx("contact")}>
           <div className={cx("icon-phone")}>
