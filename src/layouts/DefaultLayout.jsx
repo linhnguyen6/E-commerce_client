@@ -7,7 +7,9 @@ const DefaultLayout = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <div id="main">
+        <Outlet />
+      </div>
       <Footer />
     </>
   );
