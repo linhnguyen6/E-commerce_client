@@ -31,7 +31,7 @@ const images = {
   cart2: require("../assets/images/cart-2.jpg"),
   cart3: require("../assets/images/cart-3.jpg"),
   language: require("../assets/images/language.png"),
-  nodata: require("../assets/images/nodata.png")
+  nodata: require("../assets/images/nodata.png"),
 };
 
 export default images;

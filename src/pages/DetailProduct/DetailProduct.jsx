@@ -84,7 +84,7 @@ const DetailProduct = () => {
             precision={0.5}
             readOnly
           />
-          <p className={cx("price")}>$50.00</p>
+          <p className={cx("price")}>${product.price}</p>
           <p className={cx("detail")}>{product.desc}</p>
           <div className={cx("row-quantity")}>
             <div className={cx("quantity")}>

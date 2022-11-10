@@ -22,7 +22,6 @@ const cx = classNames.bind(styles);
 
 const Home = () => {
   const dispatch = useDispatch();
-  const countProductOrder = 1;
   document.title = "Home Page | Ogani";
 
   // state
@@ -45,9 +44,7 @@ const Home = () => {
   };
 
   const handleAddToCart = (product) => {
-    dispatch(
-      cartSlice.actions.addToCart({ ...product, quantity: countProductOrder })
-    );
+    dispatch(cartSlice.actions.addToCart({ ...product, quantity: 1 }));
     toastr.success("Add to cart successfully");
   };
 

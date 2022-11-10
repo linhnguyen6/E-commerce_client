@@ -142,6 +142,11 @@
   color: unset;
 }
 
+.category-item.active a {
+  color: #00aefd;
+  font-weight: bold;
+}
+
 .category-item a:hover {
   color: #00aefd;
 }
@@ -151,6 +156,10 @@
   height: 270px;
   cursor: pointer;
   overflow: hidden;
+}
+
+.box-product img {
+  max-width: 100%;
 }
 
 .box-product:hover .feature-item-pic {

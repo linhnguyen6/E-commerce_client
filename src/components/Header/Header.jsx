@@ -58,27 +58,23 @@ const Header = () => {
     setCategories(data);
   };
 
-  const handleChangeInput = debounce(async (e) => {
+  const handleChangeInput = (e) => {
     const keyword = e.target.value;
-    if (keyword !== "") {
-      try {
-        const { data } = await search(keyword);
-        setProducts(data);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        return error;
-      }
-    }
-  }, 2000);
-
-  const handleCheckLoading = (e) => {
-    const keyword = e.target.value;
-    if (keyword.length !== 0) {
-      setLoading(true);
-    } else {
-      setProducts(undefined);
+    setLoading(true);
+    if (keyword === "") {
       setLoading(false);
+      setProducts(undefined);
+    } else {
+      debounce(async () => {
+        try {
+          const { data } = await search(keyword);
+          setProducts(data);
+          setLoading(false);
+        } catch (error) {
+          setLoading(false);
+          return error;
+        }
+      }, 2000)();
     }
   };
 
@@ -90,16 +86,16 @@ const Header = () => {
   const menuItems = [
     {
       page: "HOME",
-      link: "/"
+      link: "/",
     },
     {
       page: "BLOG",
-      link: ""
+      link: "",
     },
     {
       page: "CONTACT",
-      link: "/contact"
-    }
+      link: "/contact",
+    },
   ];
 
   return (
@@ -148,11 +144,11 @@ const Header = () => {
                   onClose={handleClose}
                   anchorOrigin={{
                     vertical: "bottom",
-                    horizontal: "left"
+                    horizontal: "left",
                   }}
                   transformOrigin={{
                     vertical: "top",
-                    horizontal: "left"
+                    horizontal: "left",
                   }}
                 >
                   <MenuItem
@@ -289,7 +285,6 @@ const Header = () => {
             className={cx("input-search")}
             placeholder="What do you need ?"
             onChange={handleChangeInput}
-            onKeyUp={handleCheckLoading}
           />
           <button className={cx("btn-search")}>SEARCH</button>
           {loading ? <CircularProgress className={cx("loading")} /> : null}

@@ -25,3 +25,7 @@ export const show = (id) => {
 export const search = (keyword) => {
   return instance.get(`${url}?q=${keyword}`);
 };
+
+export const getLimitProduct = (limit) => {
+  return instance.get(`${url}?_limit=${limit}&_sort=id`);
+};

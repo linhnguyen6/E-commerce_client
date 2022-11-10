@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { PaymentElement } from "@stripe/react-stripe-js";
+import { PAYMENT_ERROR_CODE } from "../../utils/constant";
 import toastr from "toastr";
 // styles
 import styles from "./Payment.module.css";
 import classNames from "classnames/bind";
-import { PAYMENT_ERROR_CODE } from "../../utils/constant";
 const cx = classNames.bind(styles);
 
 const Payment = () => {

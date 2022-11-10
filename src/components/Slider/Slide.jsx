@@ -1,38 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getLimitProduct } from "../../api/product";
 import Slider from "react-slick";
-import images from "../../assets";
 // style
 import "./Slide.css";
 
 const Slide = () => {
-  const listProduct = [
-    {
-      id: 1,
-      image: images.cat1,
-      name: "Dried Fruit",
-    },
-    {
-      id: 2,
-      image: images.cat2,
-      name: "Vegetables",
-    },
-    {
-      id: 3,
-      image: images.cat3,
-      name: "drink fruits",
-    },
-    {
-      id: 4,
-      image: images.cat4,
-      name: "Fresh Fruit",
-    },
-    {
-      id: 5,
-      image: images.cat5,
-      name: "Vegetables",
-    },
-  ];
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getListProducts();
+  }, []);
+
+  const getListProducts = async () => {
+    const { data } = await getLimitProduct(5);
+    setProducts(data);
+  };
 
   const settings = {
     infinite: true,
@@ -71,10 +54,12 @@ const Slide = () => {
 
   return (
     <Slider {...settings}>
-      {listProduct.map((product) => (
+      {products.map((product) => (
         <div key={product.id} className="product-item-slide">
           <img src={product.image} alt="" />
-          <Link className="product-name-slide">{product.name}</Link>
+          <Link className="product-name-slide" to={`/product/${product.id}`}>
+            {product.name}
+          </Link>
         </div>
       ))}
     </Slider>

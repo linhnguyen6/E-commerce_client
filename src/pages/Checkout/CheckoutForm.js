@@ -2,13 +2,20 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import PaymentForm from "./Payment";
 import { useSelector } from "react-redux";
+import PaymentForm from "./Payment";
+
+import styles from "./Checkout.module.css";
+import classNames from "classnames/bind";
+const cx = classNames.bind(styles);
 
 const CheckoutForm = () => {
   const { carts } = useSelector(({ cart }) => cart);
+
+  // state
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getClientSecret();
@@ -21,13 +28,20 @@ const CheckoutForm = () => {
   }, 0);
 
   const getClientSecret = async () => {
-    const { data } = await axios.post(
-      process.env.REACT_APP_CREATE_PAYMENT_INTENT_API,
-      {
-        amount
-      }
-    );
-    setClientSecret(data.clientSecret);
+    try {
+      setLoading(true);
+      const { data } = await axios.post(
+        process.env.REACT_APP_CREATE_PAYMENT_INTENT_API,
+        {
+          amount,
+        }
+      );
+      setLoading(false);
+      setClientSecret(data.clientSecret);
+    } catch (error) {
+      setLoading(false);
+      return error;
+    }
   };
 
   const getPublishableKey = async () => {
@@ -37,6 +51,7 @@ const CheckoutForm = () => {
 
   return (
     <>
+      {loading && <div className={cx("loader")}></div>}
       {clientSecret && stripePromise && (
         <Elements stripe={stripePromise} options={{ clientSecret }}>
           <PaymentForm />

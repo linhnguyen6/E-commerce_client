@@ -20,11 +20,14 @@ const cx = classNames.bind(styles);
 const Category = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const countProductOrder = 1;
   document.title = "Category" + id;
 
   // state
-  const [value, setValue] = useState([PriceRange.min, PriceRange.max]);
+  const [priceRange, setPriceRange] = useState([
+    PriceRange.min,
+    PriceRange.max,
+  ]);
+
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState();
   const [products, setProducts] = useState([]);
@@ -45,19 +48,18 @@ const Category = () => {
     setProducts(data.products);
   };
 
-  const handleChange = (e, newValue) => setValue(newValue);
+  const handleChange = (e, newValue) => setPriceRange(newValue);
 
   const handleClickFilter = () => {
     const productsFilter = category.products.filter(
-      (product) => product.price >= value[0] && product.price <= value[1]
+      (product) =>
+        product.price >= priceRange[0] && product.price <= priceRange[1]
     );
     setProducts(productsFilter);
   };
 
   const handleAddToCart = (product) => {
-    dispatch(
-      cartSlice.actions.addToCart({ ...product, quantity: countProductOrder })
-    );
+    dispatch(cartSlice.actions.addToCart({ ...product, quantity: 1 }));
     toastr.success("Add to cart successfully");
   };
 
@@ -78,7 +80,13 @@ const Category = () => {
           <h3>Category</h3>
           <ul>
             {categories.map((category) => (
-              <li key={category.id} className={cx("category-item")}>
+              <li
+                key={category.id}
+                className={cx(
+                  "category-item",
+                  category.id === id ? "active" : ""
+                )}
+              >
                 <Link to={`${Path.Category}/${category.id}`}>
                   {category.name}
                 </Link>
@@ -89,7 +97,7 @@ const Category = () => {
           <Box className={cx("input-range-price")}>
             <Slider
               getAriaLabel={() => "Temperature range"}
-              value={value}
+              value={priceRange}
               onChange={handleChange}
               valueLabelDisplay="auto"
               getAriaValueText={valuetext}
@@ -98,9 +106,9 @@ const Category = () => {
             />
           </Box>
           <div className={cx("range-price")}>
-            <span>${value[0]}</span>
+            <span>${priceRange[0]}</span>
             <span>-</span>
-            <span>${value[1]}</span>
+            <span>${priceRange[1]}</span>
             <button className={cx("btn-filter")} onClick={handleClickFilter}>
               Filter
             </button>
