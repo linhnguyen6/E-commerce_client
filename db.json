@@ -39,105 +39,6 @@
   ],
   "products": [
     {
-      "categoryId": "633b99cdebd41a2459df1e97",
-      "name": "Beef",
-      "price": 20,
-      "quantity": 4,
-      "desc": "Beef is the meat of the cow. It is a common livestock food around the world, along with pork, prepared and used in many ways, in many different cultures and religions, along with pork and chicken, beef is a one of the most commonly consumed meats.",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668055900/product-1_ccuskr.jpg",
-      "id": 1
-    },
-    {
-      "categoryId": "633b99cd123aa1339c115801",
-      "name": "Banana",
-      "price": 2,
-      "quantity": 30,
-      "desc": "The banana plant is the largest herbaceous flowering plant.All the above-ground parts of a banana plant grow from a structure usually called a \"corm\".Plants are normally tall and fairly sturdy with a treelike appearance, but what appears to be a trunk is actually a \"false stem\" or pseudostem",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668055970/product-2_hi1e2d.jpg",
-      "id": 2
-    },
-    {
-      "categoryId": "633b99cd1d766ae03c7001ef",
-      "name": "Grape",
-      "price": 3,
-      "quantity": 14,
-      "desc": "A grape is a fruit, botanically a berry, of the deciduous woody vines of the flowering plant genus Vitis. Grapes are a non-climacteric type of fruit",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668058320/product-4_awoyna.jpg",
-      "id": 3
-    },
-    {
-      "categoryId": "633b99cd982eef73c8881ad2",
-      "name": "Water Melon",
-      "price": 6,
-      "quantity": 3,
-      "desc": "Watermelon is a species of plant in the family Cucurbitaceae, a vine-like flowering plant native to West Africa. It is grown for its fruit. Watermelon is a species of long, twisted vine in the flowering plant family Cucurbitaceae.",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668060175/product-7_ebhspe.jpg",
-      "id": 4
-    },
-    {
-      "categoryId": "633b99cd715a51171cd8f076",
-      "name": "Guava",
-      "price": 1,
-      "quantity": 32,
-      "desc": "Guava, also known as Guava, ornamental guava is a perennial evergreen fruit tree, belonging to the family Peach Kim Niang, native to Brazil, first described by L. in 1753.",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668060296/product-3_zbriup.jpg",
-      "id": 5
-    },
-    {
-      "categoryId": "633b99cd715a51171cd8f076",
-      "name": "Humburger",
-      "price": 50,
-      "quantity": 12,
-      "desc": "Hamburger is a type of food that consists of a meat sandwich in the middle. Pieces of meat can be grilled, fried, smoked or grilled over an open fire.",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668060366/product-5_niofhu.jpg",
-      "id": 6
-    },
-    {
-      "categoryId": "633b99cd982eef73c8881ad2",
-      "name": "Mango",
-      "price": 5,
-      "quantity": 2,
-      "desc": "Discover the latest trends in Mango fashion, footwear and accessories. Shop the best outfits for this season at our online store.",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668060446/product-6_dbts4p.jpg",
-      "id": 7
-    },
-    {
-      "categoryId": "633b99cd982eef73c8881ad2",
-      "name": "Tomato",
-      "price": 5,
-      "quantity": 32,
-      "desc": "The tomato is the edible berry of the plant Solanum lycopersicum, commonly known as the tomato plant. The species originated in western South America, Mexico, and Central America. The Mexican Nahuatl word tomatl gave rise to the Spanish word tomate, from which the English word tomato derived",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668060675/product-8_q6tw6p.jpg",
-      "id": 8
-    },
-    {
-      "categoryId": "633b99cd7af56dae4a3739cc",
-      "name": "Tropicana",
-      "price": 15,
-      "quantity": 3,
-      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint. Quo, distinctio?",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668060945/product-11_yo2pkh.jpg",
-      "id": 9
-    },
-    {
-      "categoryId": "633b99cd3f29b9c7872627ba",
-      "name": "Sliwki",
-      "price": 32,
-      "quantity": 165,
-      "desc": "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint. Quo, distinctio?\n",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668061004/product-9_uucqme.jpg",
-      "id": 10
-    },
-    {
-      "categoryId": "633b99cd123aa1339c115801",
-      "name": "Kiwi & Grape ",
-      "price": 162,
-      "quantity": 21,
-      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint. Quo, distinctio?",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668061103/product-12_vmq1kg.jpg",
-      "id": 11
-    },
-    {
       "categoryId": "633b99cd982eef73c8881ad2",
       "name": "Hung Que",
       "price": 1,
@@ -298,6 +199,26 @@
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062524/dualuoi_xzdemf.webp",
       "id": 29
+    }
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Cooking tips make cooking simple",
+      "desc": "Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat",
+      "image": "https://technext.github.io/ogani/img/blog/blog-1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "6 ways to prepare breakfast for 30",
+      "desc": "Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat",
+      "image": "https://technext.github.io/ogani/img/blog/blog-2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Visit the clean farm in the US",
+      "desc": "Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat",
+      "image": "https://technext.github.io/ogani/img/blog/blog-3.jpg"
     }
   ]
 }

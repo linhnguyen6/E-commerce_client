@@ -12,8 +12,11 @@ const cx = classNames.bind(styles);
 
 const Information = () => {
   // selector
-  const { carts } = useSelector(({ cart }) => cart);
-
+  const { cart, auth } = useSelector(({ cart, auth }) => ({
+    cart,
+    auth,
+  }));
+  const { carts } = cart;
   const navigate = useNavigate();
 
   // state
@@ -21,7 +24,11 @@ const Information = () => {
   const [districts, setDistricts] = useState([]);
   const [wards, setWards] = useState([]);
 
-  const { register, formState, handleSubmit } = useForm();
+  const { register, formState, handleSubmit } = useForm({
+    defaultValues: {
+      email: auth?.user?.email || "",
+    },
+  });
   const { errors } = formState;
 
   useEffect(() => {

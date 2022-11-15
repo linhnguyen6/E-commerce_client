@@ -11,6 +11,7 @@ import Contact from "./pages/Contact/Contact";
 import Protected from "./components/Protected";
 import AdminLayout from "./layouts/AdminLayout";
 import PageNotFound from "./pages/PageNotFound";
+import AdminLoginPage from "./pages/Admin/Login";
 import {
   CategoryAdmin,
   ProductAdmin,
@@ -62,6 +63,7 @@ const App = () => {
           </Route>
           <Route path={Path.AdminCart} element={<CartAdmin />} />
         </Route>
+        <Route path={Path.AdminLogin} element={<AdminLoginPage />} />
         <Route path={Path.PageNotFound} element={<PageNotFound />} />
       </Routes>
     </ScrollToTop>

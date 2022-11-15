@@ -23,7 +23,7 @@ export const show = (id) => {
 };
 
 export const search = (keyword) => {
-  return instance.get(`${url}?q=${keyword}`);
+  return instance.get(`${url}?name_like=${keyword}`);
 };
 
 export const getLimitProduct = (limit) => {

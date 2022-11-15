@@ -82,6 +82,11 @@
   padding: 10px 0;
 }
 
+.quantity button:nth-child(2) {
+  font-weight: bold;
+  color: black;
+}
+
 .btn-continue {
   border: none;
   font-weight: bold;

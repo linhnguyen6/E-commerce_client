@@ -18,6 +18,7 @@ const Path = {
   AdminProductEdit: "/admin/products/:id/edit",
   AdminProductAdd: "/admin/products/add",
   AdminCart: "/admin/cart",
+  AdminLogin: "/admin/login",
   PageNotFound: "/*",
 };
 

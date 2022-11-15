@@ -1,0 +1,67 @@
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* color: white; */
+}
+
+.flex-container .text-center {
+  text-align: center;
+}
+
+.flex-container .text-center h1,
+.flex-container .text-center h3 {
+  margin: 10px;
+  cursor: default;
+}
+
+.flex-container .text-center h1 .fade-in,
+.flex-container .text-center h3 .fade-in {
+  animation: fadeIn 2s ease infinite;
+}
+
+.flex-container .text-center h1 {
+  font-size: 8em;
+  transition: font-size 200ms ease-in-out;
+  border-bottom: 1px dashed #00aefd;
+}
+
+.flex-container .text-center h1 span#digit1 {
+  animation-delay: 200ms;
+}
+.flex-container .text-center h1 span#digit2 {
+  animation-delay: 300ms;
+}
+
+.flex-container .text-center h1 span#digit3 {
+  animation-delay: 400ms;
+}
+
+.flex-container .text-center button {
+  border: 1px solid #00aefd;
+  background: transparent;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #00aefd;
+  text-transform: uppercase;
+  transition: background-color 200ms ease-in;
+  margin: 20px 0;
+}
+
+.flex-container .text-center button:hover {
+  background-color: #00aefd;
+  color: #555;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

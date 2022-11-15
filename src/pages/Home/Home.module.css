@@ -108,14 +108,17 @@ p.slogan {
   border-color: #7fad39;
 }
 
+.pagination {
+  margin: 10px auto;
+  width: fit-content;
+  display: block;
+}
+
 .list-product {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-  /* display: flex;
-  justify-content: flex-start;
+  display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 30px; */
+  gap: 30px;
 }
 
 .box-product {

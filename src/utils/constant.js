@@ -11,3 +11,7 @@ export const PriceRange = {
 export const StatusCodeCheckout = {
   success: "succeeded",
 };
+
+export const countLimitProductShow = 5;
+
+export const limitProductInPage = 12;

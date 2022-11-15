@@ -39,6 +39,7 @@ const Header = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState();
+  const [keyword, setKeyword] = useState("");
 
   // selector
   const { cart: cartReducer, auth } = useSelector((state) => state);
@@ -49,6 +50,14 @@ const Header = () => {
     getListCategories();
   }, []);
 
+  useEffect(() => {
+    if (keyword.trim() !== "" && keyword !== undefined) {
+      searchProduct(keyword);
+    } else {
+      setProducts(undefined);
+    }
+  }, [keyword]);
+
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
   const handleLogout = () => dispatch(logout());
@@ -58,23 +67,19 @@ const Header = () => {
     setCategories(data);
   };
 
-  const handleChangeInput = (e) => {
-    const keyword = e.target.value;
-    setLoading(true);
-    if (keyword === "") {
+  const updateKeyword = (e) => setKeyword(e.target.value);
+
+  const handleChangeInput = debounce(updateKeyword, 500);
+
+  const searchProduct = async (keyword) => {
+    try {
+      setLoading(true);
+      const { data } = await search(keyword);
+      setProducts(data);
+    } catch (error) {
+      return error;
+    } finally {
       setLoading(false);
-      setProducts(undefined);
-    } else {
-      debounce(async () => {
-        try {
-          const { data } = await search(keyword);
-          setProducts(data);
-          setLoading(false);
-        } catch (error) {
-          setLoading(false);
-          return error;
-        }
-      }, 2000)();
     }
   };
 
@@ -284,7 +289,7 @@ const Header = () => {
           <input
             className={cx("input-search")}
             placeholder="What do you need ?"
-            onChange={handleChangeInput}
+            onKeyUp={handleChangeInput}
           />
           <button className={cx("btn-search")}>SEARCH</button>
           {loading ? <CircularProgress className={cx("loading")} /> : null}

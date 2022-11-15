@@ -1,13 +1,15 @@
 import React from "react";
-import PageNotFound from "../pages/PageNotFound";
+import { useSelector } from "react-redux";
+import AdminLoginPage from "../pages/Admin/Login";
 
 const Protected = ({ children }) => {
-  const isAdmin = true;
+  const { user } = useSelector(({ auth }) => auth);
 
-  if (isAdmin) {
+  if (user?.emailVerified) {
     return children;
   }
-  return <PageNotFound />;
+
+  return <AdminLoginPage />;
 };
 
 export default Protected;

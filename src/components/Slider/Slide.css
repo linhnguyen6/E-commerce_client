@@ -1,7 +1,6 @@
 .slick-next {
   right: -56px !important;
   border: 1px solid #ebebeb !important;
-  background: #979797 !important;
   width: 30px;
   height: 40px;
   border-radius: 5px;
@@ -11,10 +10,14 @@
   left: -56px !important;
   z-index: 100000;
   border: 1px solid #ebebeb !important;
-  background: #979797 !important;
   width: 30px;
   height: 40px;
   border-radius: 5px;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  color: #db2020 !important;
 }
 
 .product-item-slide {
@@ -43,6 +46,11 @@
 .slick-list {
   height: 300px;
   margin-top: 20px;
+}
+
+.product-item-slide img {
+  width: 270px;
+  height: 270px;
 }
 
 @media only screen and (max-width: 767px) and (min-width: 390px) {

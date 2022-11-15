@@ -4,7 +4,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
 import PaymentForm from "./Payment";
-
+// style
 import styles from "./Checkout.module.css";
 import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
@@ -36,11 +36,11 @@ const CheckoutForm = () => {
           amount,
         }
       );
-      setLoading(false);
       setClientSecret(data.clientSecret);
     } catch (error) {
-      setLoading(false);
       return error;
+    } finally {
+      setLoading(false);
     }
   };
 
