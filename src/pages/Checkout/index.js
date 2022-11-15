@@ -23,6 +23,7 @@ const Information = () => {
   const [provinces, setProvinces] = useState([]);
   const [districts, setDistricts] = useState([]);
   const [wards, setWards] = useState([]);
+  const [wardOrder, setWardOrder] = useState();
 
   const { register, formState, handleSubmit } = useForm({
     defaultValues: {
@@ -46,6 +47,8 @@ const Information = () => {
     const data = await getWards(e.target.value);
     setWards(data);
   };
+
+  const onChangeWard = (e) => setWardOrder(e.target.value);
 
   const listProvinces = async () => {
     const data = await getProvince();
@@ -148,6 +151,7 @@ const Information = () => {
               <select
                 {...register("ward", {
                   required: "Please select the ward",
+                  onChange: (e) => onChangeWard(e),
                 })}
               >
                 <option value="">Select Ward</option>
@@ -170,14 +174,25 @@ const Information = () => {
               <ul>
                 {carts.map((product) => (
                   <li key={product.id}>
-                    {product.name}
+                    <span>{product.name}</span>
                     <span>${product.price * product.quantity}</span>
                   </li>
                 ))}
+                {total > 500 && wardOrder ? (
+                  <li>
+                    <span>Fee Ship</span>
+                    <span>$0</span>
+                  </li>
+                ) : total <= 500 && wardOrder ? (
+                  <li>
+                    <span>Fee Ship</span>
+                    <span>$10</span>
+                  </li>
+                ) : null}
               </ul>
               <div className={cx("check-order-total")}>
                 Total
-                <span>${total}</span>
+                <span>${total <= 500 && wardOrder ? total + 10 : total}</span>
               </div>
             </div>
             <button form="form-infor" className={cx("button-order")}>

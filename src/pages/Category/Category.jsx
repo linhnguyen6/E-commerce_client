@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import images from "../../assets";
 import { read, getOne as show } from "../../api/category";
@@ -20,6 +20,8 @@ const cx = classNames.bind(styles);
 const Category = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   document.title = "Category" + id;
 
   // state
@@ -193,7 +195,12 @@ const Category = () => {
                       </li>
                     </ul>
                   </div>
-                  <p className={cx("product-name")}>{product.name}</p>
+                  <p
+                    className={cx("product-name")}
+                    onClick={() => navigate("/product/" + product.id)}
+                  >
+                    {product.name}
+                  </p>
                   <p className={cx("product-price")}>${product.price}</p>
                 </div>
               ))

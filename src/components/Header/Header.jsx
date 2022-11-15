@@ -112,7 +112,7 @@ const Header = () => {
             linh.nguyen6@tda.company
           </span>
           <span className={cx("header_top_slogan")}>
-            Free Shipping for all Order of $99
+            Free Shipping for all Order big than $500
           </span>
         </div>
         <div className={cx("header_top_right")}>
@@ -259,7 +259,7 @@ const Header = () => {
           linh.nguyen6@tda.company
         </div>
         <br />
-        Free Shipping for all Order of $99
+        Free Shipping for all Order big than $500
       </div>
       <label htmlFor="hidden_menu" className={cx("overlay")}></label>
       <div className={cx("wrapper")}>

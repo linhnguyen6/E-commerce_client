@@ -34,13 +34,14 @@ const DetailProduct = () => {
   const getProduct = async (id) => {
     const { data: detailProduct } = await show(id);
     setProduct(detailProduct);
+    document.title = detailProduct.name;
     const { categoryId } = await (await show(id)).data;
     const { data } = await getCategory(categoryId);
-    const filterProducts = data.products.filter((product) => product.id !== id);
+    const filterProducts = data.products.filter(
+      (product) => product.id !== +id
+    );
     setRelatedProduct(filterProducts);
   };
-
-  document.title = "Product" + id;
 
   const handleIncrease = () => {
     if (count >= 50) {

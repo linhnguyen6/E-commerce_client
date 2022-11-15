@@ -268,6 +268,11 @@
     flex-direction: column;
   }
 
+  .category ul,
+  .category h3:first-child {
+    display: none;
+  }
+
   .list-product {
     display: flex;
     flex-direction: column;

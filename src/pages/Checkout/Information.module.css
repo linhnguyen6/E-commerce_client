@@ -129,9 +129,11 @@
   list-style: none;
   font-size: 15px;
   padding: 5px 0;
+  display: flex;
+  justify-content: space-between;
 }
 
-.detail-order ul li span {
+.detail-order ul li span:last-child {
   float: right;
   font-weight: bold;
   color: #6f6f6f;
@@ -149,6 +151,11 @@
     width: 100%;
     max-width: 360px;
     margin-inline: auto;
+  }
+
+  .box-email-name {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {

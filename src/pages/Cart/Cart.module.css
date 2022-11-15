@@ -262,3 +262,7 @@
     max-width: 720px;
   }
 }
+
+.disabled-checkout {
+  opacity: 0.5;
+}

@@ -145,9 +145,15 @@ const Cart = () => {
                 <li>Total</li>
                 <li>${total}</li>
               </ul>
-              <Link to="/checkout">
-                <button>PROCEED TO CHECKOUT</button>
-              </Link>
+              {carts?.length > 0 ? (
+                <Link to="/checkout">
+                  <button>PROCEED TO CHECKOUT</button>
+                </Link>
+              ) : (
+                <button className={cx("disabled-checkout")}>
+                  PROCEED TO CHECKOUT
+                </button>
+              )}
             </div>
           </div>
         </div>

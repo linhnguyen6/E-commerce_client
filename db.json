@@ -41,7 +41,7 @@
     {
       "categoryId": "633b99cd982eef73c8881ad2",
       "name": "Hung Que",
-      "price": 1,
+      "price": 10,
       "quantity": 20,
       "desc": "Thyme, also known as basil, big leaf basil or great basil, is a herb that belongs to the lily family. Thyme is native to the tropics from Central Africa to Southeast Asia. It is a difficult plant to survive in adverse conditions, and is used in many cuisines around the world",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668061579/que_tay_grande_eubk9y.webp",
@@ -50,7 +50,7 @@
     {
       "categoryId": "633b99cd1d766ae03c7001ef",
       "name": "Bun Gao Jimmy",
-      "price": 20,
+      "price": 200,
       "quantity": 31,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint. Quo, distinctio",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668061630/bun-gao-jimmy-250g_grande_uyvqp7.webp",
@@ -59,7 +59,7 @@
     {
       "categoryId": "633b99cd982eef73c8881ad2",
       "name": "Cai Xoan",
-      "price": 5,
+      "price": 50,
       "quantity": 21,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668061705/_kale_nam_an_rrfarn_grande_c27ba07a866b4ee493f12334e4140fc1_grande_m5d9bx.webp",
@@ -68,7 +68,7 @@
     {
       "categoryId": "633b99cd982eef73c8881ad2",
       "name": "Ca rot",
-      "price": 1,
+      "price": 10,
       "quantity": 32,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668061742/carot_eaffyt.webp",
@@ -77,7 +77,7 @@
     {
       "categoryId": "633b99cd982eef73c8881ad2",
       "name": "Dau tay",
-      "price": 5,
+      "price": 50,
       "quantity": 16,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668061772/dautay_ep3gex.webp",
@@ -86,7 +86,7 @@
     {
       "categoryId": "633b99cd982eef73c8881ad2",
       "name": "Khoai lang",
-      "price": 6,
+      "price": 60,
       "quantity": 65,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668061806/khoailang_p2iscj.webp",
@@ -95,7 +95,7 @@
     {
       "categoryId": "633b99cd982eef73c8881ad2",
       "name": "Toi uc",
-      "price": 3,
+      "price": 30,
       "quantity": 16,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668061970/toiuc_tgkyww.webp",
@@ -104,7 +104,7 @@
     {
       "categoryId": "633b99cd982eef73c8881ad2",
       "name": "Chanh",
-      "price": 1,
+      "price": 10,
       "quantity": 16,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668061991/chanh_suxty0.webp",
@@ -113,7 +113,7 @@
     {
       "categoryId": "633b99cdebd41a2459df1e97",
       "name": "Cu Gung",
-      "price": 332,
+      "price": 3320,
       "quantity": 165,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062091/cugung_knypdb.webp",
@@ -122,7 +122,7 @@
     {
       "categoryId": "633b99cd1d766ae03c7001ef",
       "name": "Hanh tay",
-      "price": 215,
+      "price": 2150,
       "quantity": 12,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062110/hanhtay_evezdx.webp",
@@ -131,7 +131,7 @@
     {
       "categoryId": "633b99cd982eef73c8881ad2",
       "name": "Cu nghe",
-      "price": 3,
+      "price": 30,
       "quantity": 498,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062127/cunghe_dp1lcv.webp",
@@ -140,7 +140,7 @@
     {
       "categoryId": "633b99cdc9bc63e5eb4a40e2",
       "name": "Can tay",
-      "price": 5,
+      "price": 50,
       "quantity": 15,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062214/cantay_qyjgcz.webp",
@@ -149,7 +149,7 @@
     {
       "categoryId": "633b99cd1d766ae03c7001ef",
       "name": "Cay sa",
-      "price": 1,
+      "price": 10,
       "quantity": 232,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062294/cay_sa_nu8hrf.webp",
@@ -158,7 +158,7 @@
     {
       "categoryId": "633b99cdc9bc63e5eb4a40e2",
       "name": "Bi hat dau",
-      "price": 12,
+      "price": 120,
       "quantity": 21,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062311/bi_hat_dau_cfhgnf.webp",
@@ -167,7 +167,7 @@
     {
       "categoryId": "633b99cd123aa1339c115801",
       "name": "Cai Thao",
-      "price": 32,
+      "price": 320,
       "quantity": 21,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062351/caitha_zlihmj.webp",
@@ -176,7 +176,7 @@
     {
       "categoryId": "633b99cdc9bc63e5eb4a40e2",
       "name": "Khoai mo",
-      "price": 32,
+      "price": 320,
       "quantity": 16,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062433/khoaimo_nwoenu.webp",
@@ -185,7 +185,7 @@
     {
       "categoryId": "633b99cd7af56dae4a3739cc",
       "name": "Cu hoai son",
-      "price": 13,
+      "price": 130,
       "quantity": 31,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062455/cuhoaison_vulocn.webp",
@@ -194,11 +194,29 @@
     {
       "categoryId": "633b99cdebd41a2459df1e97",
       "name": "Dua luoi",
-      "price": 15,
+      "price": 150,
       "quantity": 21,
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062524/dualuoi_xzdemf.webp",
       "id": 29
+    },
+    {
+      "categoryId": "633b99cdebd41a2459df1e97",
+      "name": "Rau ngo",
+      "price": 21,
+      "quantity": 321,
+      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ipsum incidunt, totam, quae, at temporibus odio impedit culpa explicabo aliquid pariatur aliquam asperiores inventore maxime quia placeat. Perspiciatis, dolor officia?\n",
+      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668504031/raungo_ocizwd.webp",
+      "id": 30
+    },
+    {
+      "categoryId": "633b99cdebd41a2459df1e97",
+      "name": "Cu nguu bang",
+      "price": 5,
+      "quantity": 78,
+      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ipsum incidunt, totam, quae, at temporibus odio impedit culpa explicabo aliquid pariatur aliquam asperiores inventore maxime quia placeat. Perspiciatis, dolor officia?\n",
+      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668504134/nguu-bang-_g__grande_ne0doz.webp",
+      "id": 31
     }
   ],
   "blogs": [
