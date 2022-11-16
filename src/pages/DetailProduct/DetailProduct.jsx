@@ -33,13 +33,13 @@ const DetailProduct = () => {
 
   const getProduct = async (id) => {
     const { data: detailProduct } = await show(id);
-    setProduct(detailProduct);
-    document.title = detailProduct.name;
     const { categoryId } = await (await show(id)).data;
     const { data } = await getCategory(categoryId);
     const filterProducts = data.products.filter(
       (product) => product.id !== +id
     );
+    document.title = detailProduct.name;
+    setProduct(detailProduct);
     setRelatedProduct(filterProducts);
   };
 
@@ -123,7 +123,7 @@ const DetailProduct = () => {
         </div>
       </div>
       <div className={cx("container", "desc")}>
-        <h3>Products Infomation</h3>
+        <h3>Products Information</h3>
         <span>{product.desc}</span>
       </div>
       <h2 className={cx("title")}>Related Product</h2>

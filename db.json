@@ -1,10 +1,6 @@
 {
   "categories": [
     {
-      "id": "633b99cdebd41a2459df1e97",
-      "name": "Fresh Meat"
-    },
-    {
       "id": "633b99cd982eef73c8881ad2",
       "name": "Vegetables"
     },
@@ -111,15 +107,6 @@
       "id": 19
     },
     {
-      "categoryId": "633b99cdebd41a2459df1e97",
-      "name": "Cu Gung",
-      "price": 3320,
-      "quantity": 165,
-      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062091/cugung_knypdb.webp",
-      "id": 20
-    },
-    {
       "categoryId": "633b99cd1d766ae03c7001ef",
       "name": "Hanh tay",
       "price": 2150,
@@ -190,33 +177,6 @@
       "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
       "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062455/cuhoaison_vulocn.webp",
       "id": 28
-    },
-    {
-      "categoryId": "633b99cdebd41a2459df1e97",
-      "name": "Dua luoi",
-      "price": 150,
-      "quantity": 21,
-      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem magnam atque quis voluptatibus cum asperiores iusto obcaecati esse quaerat omnis enim quisquam, aspernatur, accusamus ipsa assumenda sint",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668062524/dualuoi_xzdemf.webp",
-      "id": 29
-    },
-    {
-      "categoryId": "633b99cdebd41a2459df1e97",
-      "name": "Rau ngo",
-      "price": 21,
-      "quantity": 321,
-      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ipsum incidunt, totam, quae, at temporibus odio impedit culpa explicabo aliquid pariatur aliquam asperiores inventore maxime quia placeat. Perspiciatis, dolor officia?\n",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668504031/raungo_ocizwd.webp",
-      "id": 30
-    },
-    {
-      "categoryId": "633b99cdebd41a2459df1e97",
-      "name": "Cu nguu bang",
-      "price": 5,
-      "quantity": 78,
-      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ipsum incidunt, totam, quae, at temporibus odio impedit culpa explicabo aliquid pariatur aliquam asperiores inventore maxime quia placeat. Perspiciatis, dolor officia?\n",
-      "image": "http://res.cloudinary.com/linhnv/image/upload/v1668504134/nguu-bang-_g__grande_ne0doz.webp",
-      "id": 31
     }
   ],
   "blogs": [

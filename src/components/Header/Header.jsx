@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { read } from "../../api/category";
 import { search } from "../../api/product";
 import { logout } from "../../reducer/authSlice";
+import { emailAddress, freeShip, menuItems } from "../../utils/constant";
 import images from "../../assets";
 import Path from "../../routes";
 // MUI
@@ -88,32 +89,13 @@ const Header = () => {
     setProducts(undefined);
   };
 
-  const menuItems = [
-    {
-      page: "HOME",
-      link: "/",
-    },
-    {
-      page: "BLOG",
-      link: "",
-    },
-    {
-      page: "CONTACT",
-      link: "/contact",
-    },
-  ];
-
   return (
     <header>
       <div className={cx("header_top")}>
         <div className={cx("header_top_left")}>
           <MailIcon />
-          <span className={cx("header_top_email")}>
-            linh.nguyen6@tda.company
-          </span>
-          <span className={cx("header_top_slogan")}>
-            Free Shipping for all Order big than $500
-          </span>
+          <span className={cx("header_top_email")}>{emailAddress}</span>
+          <span className={cx("header_top_slogan")}>{freeShip}</span>
         </div>
         <div className={cx("header_top_right")}>
           <div className={cx("header_top_icon")}>
@@ -256,10 +238,10 @@ const Header = () => {
         </div>
         <div className={cx("icon-mail")}>
           <MailIcon />
-          linh.nguyen6@tda.company
+          {emailAddress}
         </div>
         <br />
-        Free Shipping for all Order big than $500
+        {freeShip}
       </div>
       <label htmlFor="hidden_menu" className={cx("overlay")}></label>
       <div className={cx("wrapper")}>

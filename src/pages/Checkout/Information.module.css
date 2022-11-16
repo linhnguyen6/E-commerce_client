@@ -139,6 +139,12 @@
   color: #6f6f6f;
 }
 
+.note {
+  resize: none;
+  max-height: 138px;
+  margin: 10px 0;
+}
+
 @media only screen and (max-width: 390px) {
   .infor-order {
     display: flex;
@@ -158,6 +164,7 @@
     gap: 0px;
   }
 }
+
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .infor-order {
     grid-template-columns: 2.5fr 1fr;

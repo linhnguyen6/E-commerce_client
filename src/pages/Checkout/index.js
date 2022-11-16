@@ -1,58 +1,86 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { getDistrict, getProvince, getWards } from "../../api/province";
+import { addressShop, optionGoogleMap } from "../../utils/constant";
+import { validEmail } from "../../regex";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
+import { debounce } from "lodash";
+import toastr from "toastr";
 import Path from "../../routes";
 // styles
 import classNames from "classnames/bind";
 import styles from "./Information.module.css";
-import { validEmail } from "../../regex";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 const Information = () => {
+  document.title = "Checkout";
+  const navigate = useNavigate();
+  const refInput = useRef();
+
+  // state
+  const [fee, setFee] = useState(0);
+
   // selector
   const { cart, auth } = useSelector(({ cart, auth }) => ({
     cart,
     auth,
   }));
   const { carts } = cart;
-  const navigate = useNavigate();
 
-  // state
-  const [provinces, setProvinces] = useState([]);
-  const [districts, setDistricts] = useState([]);
-  const [wards, setWards] = useState([]);
-  const [wardOrder, setWardOrder] = useState();
-
+  // use Form
   const { register, formState, handleSubmit } = useForm({
     defaultValues: {
       email: auth?.user?.email || "",
     },
   });
   const { errors } = formState;
+  const { ref, ...rest } = register("address", {
+    required: "Please enter the address",
+    onChange: (e) => onHandleChangeLocation(e),
+  });
 
   useEffect(() => {
-    listProvinces();
+    const google = window.google;
+    if (google && google?.maps?.places?.Autocomplete) {
+      new google.maps.places.Autocomplete(refInput.current, {
+        options: optionGoogleMap,
+      });
+    }
   }, []);
 
   const onSubmit = () => navigate(Path.Payment);
 
-  const onChangeProvince = async (e) => {
-    const data = await getDistrict(e.target.value);
-    setDistricts(data);
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") e.preventDefault();
   };
 
-  const onChangeDistrict = async (e) => {
-    const data = await getWards(e.target.value);
-    setWards(data);
+  const setAddressChange = (e) => {
+    const address = e.target.value;
+    countFeeShip(address);
   };
 
-  const onChangeWard = (e) => setWardOrder(e.target.value);
+  const onHandleChangeLocation = debounce(setAddressChange, 2000);
 
-  const listProvinces = async () => {
-    const data = await getProvince();
-    setProvinces(data);
+  const countFeeShip = (address) => {
+    const { google } = window;
+    let directionsService = new google.maps.DirectionsService();
+
+    let request = {
+      origin: addressShop,
+      destination: address,
+      travelMode: google.maps.TravelMode.DRIVING,
+      unitSystem: google.maps.UnitSystem.metric,
+    };
+
+    directionsService.route(request, (result, status) => {
+      if (status === google?.maps?.DirectionsStatus?.OK) {
+        const feeShip = result.routes[0]?.legs[0]?.distance?.value / 1000;
+        setFee(Number(feeShip.toFixed(1)));
+      } else {
+        toastr.warning("Location not found");
+      }
+    });
   };
 
   let total = 0;
@@ -73,15 +101,13 @@ const Information = () => {
       <div className={cx("box-user-infor")}>
         <h3>Billing Details</h3>
         <div className={cx("infor-order")}>
-          <form
-            autoComplete="off"
-            id="form-infor"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form id="form-infor" onSubmit={handleSubmit(onSubmit)}>
             <div className={cx("box-email-name")}>
               <div className={cx("form-group")}>
                 <label htmlFor="">Name</label>
                 <input
+                  autoComplete="off"
+                  onKeyDown={(e) => handleKeyDown(e)}
                   {...register("name", { required: "Please enter the name" })}
                 />
                 {errors.name && (
@@ -91,6 +117,8 @@ const Information = () => {
               <div className={cx("form-group")}>
                 <label htmlFor="">Email</label>
                 <input
+                  onKeyDown={(e) => handleKeyDown(e)}
+                  autoComplete="off"
                   {...register("email", {
                     required: "Please enter the Email",
                     pattern: {
@@ -105,63 +133,23 @@ const Information = () => {
               </div>
             </div>
             <div className={cx("form-group")}>
-              <select
-                {...register("province", {
-                  required: "Please select the province",
-                  onChange: (e) => onChangeProvince(e),
-                })}
-              >
-                <option value="">Select Province</option>
-                {provinces?.map((province) => (
-                  <option
-                    key={province.province_id}
-                    value={province.province_id}
-                  >
-                    {province.province_name}
-                  </option>
-                ))}
-              </select>
-
-              {errors.province && (
-                <span className={cx("error")}>{errors.province.message}</span>
+              <label htmlFor="">Address</label>
+              <input
+                onKeyDown={(e) => handleKeyDown(e)}
+                type="text"
+                {...rest}
+                ref={(e) => {
+                  ref(e);
+                  refInput.current = e;
+                }}
+              />
+              {errors.address && (
+                <span className={cx("error")}>{errors.address.message}</span>
               )}
             </div>
             <div className={cx("form-group")}>
-              <select
-                {...register("district", {
-                  required: "Please select the district",
-                  onChange: (e) => onChangeDistrict(e),
-                })}
-              >
-                <option value="">Select District</option>
-                {districts?.map((district) => (
-                  <option
-                    value={district.district_id}
-                    key={district.district_id}
-                  >
-                    {district.district_name}
-                  </option>
-                ))}
-              </select>
-              {errors.district && (
-                <span className={cx("error")}>{errors.district.message}</span>
-              )}
-            </div>
-            <div className={cx("form-group")}>
-              <select
-                {...register("ward", {
-                  required: "Please select the ward",
-                  onChange: (e) => onChangeWard(e),
-                })}
-              >
-                <option value="">Select Ward</option>
-                {wards?.map((ward, i) => (
-                  <option key={ward.ward_id}>{ward.ward_name}</option>
-                ))}
-              </select>
-              {errors.ward && (
-                <span className={cx("error")}>{errors.ward.message}</span>
-              )}
+              <label htmlFor="">Note</label>
+              <textarea className={cx("note")} cols="30" rows="10"></textarea>
             </div>
           </form>
           <div className={cx("detail-order")}>
@@ -178,24 +166,21 @@ const Information = () => {
                     <span>${product.price * product.quantity}</span>
                   </li>
                 ))}
-                {total > 500 && wardOrder ? (
-                  <li>
-                    <span>Fee Ship</span>
-                    <span>$0</span>
-                  </li>
-                ) : total <= 500 && wardOrder ? (
-                  <li>
-                    <span>Fee Ship</span>
-                    <span>$10</span>
-                  </li>
-                ) : null}
+                <li>
+                  <span>Fee ship</span>
+                  <span>${total >= 1000 ? 0 : fee}</span>
+                </li>
               </ul>
               <div className={cx("check-order-total")}>
                 Total
-                <span>${total <= 500 && wardOrder ? total + 10 : total}</span>
+                <span>${total < 1000 ? total + fee : total}</span>
               </div>
             </div>
-            <button form="form-infor" className={cx("button-order")}>
+            <button
+              form="form-infor"
+              className={cx("button-order")}
+              type="submit"
+            >
               place order
             </button>
           </div>
