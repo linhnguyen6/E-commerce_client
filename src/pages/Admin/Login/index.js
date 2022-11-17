@@ -22,10 +22,12 @@ const AdminLoginPage = () => {
   const { register, handleSubmit } = useForm();
 
   useEffect(() => {
-    if (user?.emailVerified) {
-      navigate(Path.AdminDashBoard);
-    } else {
-      toastr.error("You can have do not access");
+    if (user) {
+      if (user?.emailVerified) {
+        navigate(Path.AdminDashBoard);
+      } else {
+        toastr.error("You can have do not access");
+      }
     }
   }, [user, navigate]);
 
