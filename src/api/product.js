@@ -29,3 +29,7 @@ export const search = (keyword) => {
 export const getLimitProduct = (limit) => {
   return instance.get(`${url}?_limit=${limit}&_sort=id`);
 };
+
+export const showProductSlide = (limit) => {
+  return instance.get(`${url}?_limit=${limit}&_sort=id&_order=desc`);
+};

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getLimitProduct } from "../../api/product";
+import { showProductSlide } from "../../api/product";
 import { countLimitProductShow } from "../../utils/constant";
 import Slider from "react-slick";
 // style
@@ -14,7 +14,7 @@ const Slide = () => {
   }, []);
 
   const getListProducts = async () => {
-    const { data } = await getLimitProduct(countLimitProductShow);
+    const { data } = await showProductSlide(countLimitProductShow);
     setProducts(data);
   };
 
